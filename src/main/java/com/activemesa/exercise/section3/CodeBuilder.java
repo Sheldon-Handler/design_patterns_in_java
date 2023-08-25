@@ -1,73 +1,42 @@
 package com.activemesa.exercise.section3;
 
-import javassist.bytecode.SignatureAttribute;
-
-import java.util.HashMap;
-import java.util.Set;
 import java.util.Vector;
 
-//public class CodeBuilder {
-//
-//    Person person = new Person();
-//    public CodeBuilder(String className) {
-//        // todo
-//        Person person = new Person();
-//
-//    }
-//
-//    public CodeBuilder addField(String name, String type) {
-//        // todo
-//        switch (type) {
-//            case "String":
-//                person.name = name;
-//                break;
-//            case "int":
-//                person.age = Integer.parseInt(name);
-//                break;
-//        }
-//        return person;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        // todo
-//
-//        return
-//        """
-//        public class Person
-//        {
-//          public String name;
-//          public int age;
-//        }
-//        """;
-//    }
-//}
 
 
     class CodeBuilder
     {
-        CodeBuilder codeBuilder;
-        HashMap<String, String> hashMap = new HashMap<>();
+
+        private String className;
+        private Vector<String> nameVector;
+        private Vector<String> typeVector;
 
         public CodeBuilder(String className)
         {
             // todo
+            this.className = className;
+            }
 
-        }
+
 
         public CodeBuilder addField(String name, String type)
         {
             // todo
-
+            nameVector.add(name);
+            typeVector.add(type);
+            return new CodeBuilder(className);
         }
 
         @Override
         public String toString()
         {
             // todo
+            String string = "";
 
+            for (int i = 0; i < nameVector.size(); i++) {
+                string += typeVector.get(i) + " " + nameVector.get(i) + ";\n";
+            }
+
+             return  "public class " + className + "\n{\n" + string + "}";
         }
     }
-
-
-
