@@ -1,8 +1,7 @@
 package com.activemesa.creational.singleton;
 
-import org.junit.jupiter.api.Test;
-
 import dev.mccue.guava.collect.Iterables;
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
@@ -37,11 +36,18 @@ class SingletonDatabase implements Database {
             Path fullPath = Paths.get(f.getPath(), "capitals.txt");
             List<String> lines = Files.readAllLines(fullPath);
 
-            Iterables.partition(lines, 2).forEach(kv -> capitals.put(kv.get(0).trim(), Integer.parseInt(kv.get(1))));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+      Iterables.partition(lines, 2)
+        .forEach(kv -> capitals.put(
+          kv.get(0).trim(),
+          Integer.parseInt(kv.get(1))
+        ));
     }
+    catch (Exception e)
+    {
+      // handle it!
+      System.err.println(e);
+    }
+  }
 
     private static final SingletonDatabase INSTANCE = new SingletonDatabase();
 
@@ -80,8 +86,22 @@ class ConfigurableRecordFinder {
     }
 }
 
-class DummyDatabase implements Database {
-    private Dictionary<String, Integer> data = new Hashtable<>();
+class SingletonTestabilityDemo
+{
+  public static void main(String[] args) {
+    SingletonDatabase db = SingletonDatabase.getInstance();
+
+    String city = "Tokyo";
+    int pop = db.getPopulation(city);
+    System.out.println(
+      String.format("%s has population %d", city, pop)
+    );
+  }
+}
+
+class DummyDatabase implements Database
+{
+  private Dictionary<String, Integer> data = new Hashtable<>();
 
     public DummyDatabase() {
         data.put("alpha", 1);
@@ -95,24 +115,38 @@ class DummyDatabase implements Database {
     }
 }
 
-class Demo3 {
+class Testability
+{
+  @Test
+  public void isSingletonTest()
+  {
+    SingletonDatabase db = SingletonDatabase.getInstance();
+    SingletonDatabase db2 = SingletonDatabase.getInstance();
+    assertSame(db, db2);
+    assertEquals(1, SingletonDatabase.getCount());
+  }
+
     @Test // not a unit test!
     public void singletonTotalPopulationTest() {
         SingletonRecordFinder rf = new SingletonRecordFinder();
         List<String> names = List.of("Seoul", "Mexico City");
         int tp = rf.getTotalPopulation(names);
-        assertEquals(1750000+1740000, tp);
+        assertEquals(17500000+17400000, tp);
     }
 
     @Test
     public void dependentPopulationTest() {
         DummyDatabase db = new DummyDatabase();
         ConfigurableRecordFinder rf = new ConfigurableRecordFinder(db);
-        assertEquals(4, rf.getTotalPopulation(List.of("alpha, gamma")));
+        assertEquals(4, rf.getTotalPopulation(List.of("alpha", "gamma")));
     }
 }
 
-class Stuff {
+class Demo3 {
     public static void main(String[] args) {
+        Testability testability = new Testability();
+        testability.isSingletonTest();
+//        testability.singletonTotalPopulationTest();
+        testability.dependentPopulationTest();
     }
 }
