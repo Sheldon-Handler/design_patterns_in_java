@@ -1,8 +1,5 @@
 package com.activemesa.exercise.section5;
 
-
-import org.apache.commons.lang3.SerializationUtils;
-
 class Point
 {
     public int x, y;
@@ -24,10 +21,13 @@ class Line
         this.end = end;
     }
 
-    public Line deepCopy() throws CloneNotSupportedException {
+
+    public Line deepCopy() {
         // todo
-        Line line = new Line(start, end);
-        Line line1 = SerializationUtils.roundtrip(line);
+        Point point1 = new Point(start.x, start.y);
+        Point point2 = new Point(end.x, end.y);
+
+        Line line = new Line(point1, point2);
         return line;
 
     }
