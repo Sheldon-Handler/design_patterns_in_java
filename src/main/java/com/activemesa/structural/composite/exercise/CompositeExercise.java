@@ -1,7 +1,6 @@
 package com.activemesa.structural.composite.exercise;
 
 import java.util.*;
-import java.util.function.Consumer;
 
 interface ValueContainer extends Iterable<Integer> {}
 
@@ -17,17 +16,7 @@ class SingleValue implements ValueContainer
 
     @Override
     public Iterator<Integer> iterator() {
-        return null;
-    }
-
-    @Override
-    public void forEach(Consumer<? super Integer> action) {
-        ValueContainer.super.forEach(action);
-    }
-
-    @Override
-    public Spliterator<Integer> spliterator() {
-        return ValueContainer.super.spliterator();
+        return Collections.singleton(value).iterator();
     }
 }
 
@@ -46,10 +35,13 @@ class MyList extends ArrayList<ValueContainer>
 
     public int sum()
     {
-        int sum = 0;
         // todo
-        for (int i = 0; i < MyList.this.size(); i++) {
-           sum += MyList.this.indexOf(i);
+        int result = 0;
+        for (ValueContainer c : this) {
+            for (int i : c) {
+                result += i;
+            }
         }
+        return result;
     }
 }

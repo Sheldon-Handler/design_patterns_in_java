@@ -1,4 +1,4 @@
-package com.activemesa.adapter.exercise;
+package com.activemesa.structural.adapter.exercise;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

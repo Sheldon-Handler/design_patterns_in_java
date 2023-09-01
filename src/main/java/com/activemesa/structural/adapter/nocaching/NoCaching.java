@@ -1,4 +1,4 @@
-package com.activemesa.adapter.nocaching;
+package com.activemesa.structural.adapter.nocaching;
 
 import java.util.*;
 import java.util.function.Consumer;

@@ -1,12 +1,10 @@
-package com.activemesa.adapter.exercise;
+package com.activemesa.structural.adapter.exercise;
 
-import com.activemesa.structural.bridge.VectorRenderer;
-
-public class Square
+class Square
 {
     public int side;
 
-    public Square(VectorRenderer side)
+    public Square(int side)
     {
         this.side = side;
     }
@@ -26,23 +24,21 @@ interface Rectangle
 class SquareToRectangleAdapter implements Rectangle
 {
     private Square square;
+
     public SquareToRectangleAdapter(Square square)
     {
         this.square = square;
     }
 
     @Override
-    public int getWidth() {
+    public int getWidth()
+    {
         return square.side;
     }
 
     @Override
-    public int getHeight() {
+    public int getHeight()
+    {
         return square.side;
-    }
-
-    @Override
-    public int getArea() {
-        return Rectangle.super.getArea();
     }
 }
