@@ -1,4 +1,4 @@
-package com.activemesa.decorator;
+package com.activemesa.structural.decorator;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
