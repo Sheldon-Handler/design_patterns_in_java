@@ -77,6 +77,12 @@
             <artifactId>guava-collect</artifactId>
             <version>0.0.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.2.1</version>
+        </dependency>
 
 
     </dependencies>
