@@ -1,33 +1,33 @@
 package com.activemesa.behavioral.command.exercise;
 
-import com.activemesa.behavioral.chainofresponsibility.exercise.Game;
-import com.activemesa.behavioral.chainofresponsibility.exercise.Goblin;
-import com.activemesa.behavioral.chainofresponsibility.exercise.GoblinKing;
 import org.junit.Test;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 public class Evaluate
 {
   @Test
-  public void manyGoblinsTest()
+  public void test()
   {
-    Game game = new Game();
-    Goblin goblin = new Goblin(game);
-    game.creatures.add(goblin);
+    Account a = new Account();
 
-    assertEquals(1, goblin.getAttack());
-    assertEquals(1, goblin.getDefense());
+    Command command = new Command(Command.Action.DEPOSIT, 100);
+    a.process(command);
 
-    Goblin goblin2 = new Goblin(game);
-    game.creatures.add(goblin2);
+    assertEquals(100, a.balance);
+    assertTrue(command.success);
 
-    assertEquals(1, goblin.getAttack());
-    assertEquals(2, goblin.getDefense());
+    command = new Command(Command.Action.WITHDRAW, 50);
+    a.process(command);
 
-    GoblinKing goblin3 = new GoblinKing(game);
-    game.creatures.add(goblin3);
+    assertEquals(50, a.balance);
+    assertTrue(command.success);
 
-    assertEquals(2, goblin.getAttack());
-    assertEquals(3, goblin.getDefense());
+    command = new Command(Command.Action.WITHDRAW, 150);
+    a.process(command);
+
+    assertEquals(50, a.balance);
+    assertFalse(command.success);
   }
 }
