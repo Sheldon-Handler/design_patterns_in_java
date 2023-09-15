@@ -29,9 +29,11 @@ class Event<Args> {
 
 class Query {
     public String creatureName;
+
     enum Argument {
         ATTACK, DEFENSE
     }
+
     public Argument argument;
     public int result;
 
@@ -112,7 +114,7 @@ class DoubleAttackModifier extends CreatureModifier implements AutoCloseable {
 
         token = game.queries.subscribe(q -> {
             if (q.creatureName.equals(creature.name)
-            && q.argument == Query.Argument.ATTACK) {
+                    && q.argument == Query.Argument.ATTACK) {
                 q.result *= 2;
             }
         });

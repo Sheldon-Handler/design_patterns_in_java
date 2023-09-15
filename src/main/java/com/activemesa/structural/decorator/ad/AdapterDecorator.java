@@ -6,13 +6,11 @@ class MyStringBuilder // extends StringBuilder
 {
     private StringBuilder sb = new StringBuilder();
 
-    public MyStringBuilder()
-    {
+    public MyStringBuilder() {
         sb = new StringBuilder();
     }
 
-    public MyStringBuilder(String str)
-    {
+    public MyStringBuilder(String str) {
         sb = new StringBuilder(str);
     }
 
@@ -21,15 +19,13 @@ class MyStringBuilder // extends StringBuilder
         return sb.toString();
     }
 
-    public MyStringBuilder appendLine(String str)
-    {
+    public MyStringBuilder appendLine(String str) {
         sb.append(str).append(System.lineSeparator());
         return this;
     }
 
     // something from string's API
-    public MyStringBuilder concat(String str)
-    {
+    public MyStringBuilder concat(String str) {
         return new MyStringBuilder(sb.toString().concat(str));
     }
 

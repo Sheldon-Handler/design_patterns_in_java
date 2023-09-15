@@ -1,13 +1,12 @@
 package com.activemesa.structural.proxy.exercise;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
-public class Evaluate
-{
+public class Evaluate {
     @Test
-    public void test()
-    {
+    public void test() {
         Person p = new Person(10);
         ResponsiblePerson rp = new ResponsiblePerson(p);
 

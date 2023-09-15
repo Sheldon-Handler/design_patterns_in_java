@@ -30,7 +30,7 @@ class GraphicObject {
                 .append(System.lineSeparator());
 
         for (GraphicObject child : children)
-            child.print(stringBuilder, depth+1);
+            child.print(stringBuilder, depth + 1);
     }
 
     @Override

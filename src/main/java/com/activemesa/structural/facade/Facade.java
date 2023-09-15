@@ -1,6 +1,7 @@
 package com.activemesa.structural.facade;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class Buffer {
     private char[] characters;
@@ -8,11 +9,11 @@ class Buffer {
 
     Buffer(int lineHeight, int lineWidth) {
         this.lineWidth = lineWidth;
-        characters = new char[lineWidth*lineHeight];
+        characters = new char[lineWidth * lineHeight];
     }
 
-    public char charAt(int x,int y) {
-        return characters[y*lineWidth+x];
+    public char charAt(int x, int y) {
+        return characters[y * lineWidth + x];
     }
 }
 
@@ -36,45 +37,46 @@ class Viewport {
         return buffer.charAt(x + offsetX, y + offsetY);
     }
 }
-    class Console {
-        private List<Viewport> viewports = new ArrayList<>();
-        int width, height;
 
-        public Console(int width, int height) {
-            this.width = width;
-            this.height = height;
-        }
+class Console {
+    private List<Viewport> viewports = new ArrayList<>();
+    int width, height;
 
-        public void addViewport(Viewport viewport) {
-            viewports.add(viewport);
-        }
+    public Console(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
 
-        public static Console newConsole(int width, int height) {
-            Buffer buffer = new Buffer(width, height);
-            Viewport viewport = new Viewport(buffer, width, height, 0, 0);
-            Console console = new Console(width, height);
-            console.addViewport(viewport);
-            return console;
-        }
+    public void addViewport(Viewport viewport) {
+        viewports.add(viewport);
+    }
 
-        public void render() {
-            for (int y = 0; y < height; ++y) {
-                for (int x = 0; x < width; ++x) {
-                    for (Viewport vp : viewports) {
-                        System.out.println(vp.charAt(x, y));
-                    }
-                    System.out.println();
+    public static Console newConsole(int width, int height) {
+        Buffer buffer = new Buffer(width, height);
+        Viewport viewport = new Viewport(buffer, width, height, 0, 0);
+        Console console = new Console(width, height);
+        console.addViewport(viewport);
+        return console;
+    }
+
+    public void render() {
+        for (int y = 0; y < height; ++y) {
+            for (int x = 0; x < width; ++x) {
+                for (Viewport vp : viewports) {
+                    System.out.println(vp.charAt(x, y));
                 }
+                System.out.println();
             }
         }
     }
+}
 
 
 class Demo {
     public static void main(String[] args) {
         Buffer buffer = new Buffer(30, 20);
         Viewport viewport = new Viewport(buffer, 30, 20, 0, 0);
-        Console console = new Console(30,20);
+        Console console = new Console(30, 20);
         console.addViewport(viewport);
         console.render();
 

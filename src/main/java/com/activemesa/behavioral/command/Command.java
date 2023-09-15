@@ -2,7 +2,6 @@ package com.activemesa.behavioral.command;
 
 import dev.mccue.guava.collect.Lists;
 
-import java.util.Collections;
 import java.util.List;
 
 class BankAccount {
@@ -18,7 +17,7 @@ class BankAccount {
         if (balance - amount >= overdraftLimit) {
             balance -= amount;
             System.out.println("Withdrew " + amount
-            + ", balance is now " + balance);
+                    + ", balance is now " + balance);
             return true;
         } else {
             return false;
@@ -35,6 +34,7 @@ class BankAccount {
 
 interface Command {
     void call();
+
     void undo();
 }
 

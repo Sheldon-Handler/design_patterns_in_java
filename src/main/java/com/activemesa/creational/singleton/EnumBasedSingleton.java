@@ -1,6 +1,9 @@
 package com.activemesa.creational.singleton;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 enum EnumBasedSingleton {
     INSTANCE;

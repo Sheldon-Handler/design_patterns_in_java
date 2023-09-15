@@ -1,10 +1,5 @@
 package com.activemesa.structural.proxy;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-
-import java.util.Objects;
-
 class Property<T> {
 
     private T value;
@@ -39,7 +34,7 @@ class Property<T> {
 }
 
 class Creature {
-//    private int agility;
+    //    private int agility;
 //
 //    public Creature() {
 //

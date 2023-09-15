@@ -6,11 +6,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class Evaluate
-{
+public class Evaluate {
     @Test
-    public void test()
-    {
+    public void test() {
         SingleValue singleValue = new SingleValue(11);
         ManyValues otherValues = new ManyValues();
         otherValues.add(22);

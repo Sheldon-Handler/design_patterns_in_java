@@ -23,7 +23,7 @@ class User2 {
             if (idx != -1) return idx;
             else {
                 strings.add(s);
-                return strings.size()-1;
+                return strings.size() - 1;
             }
         };
 

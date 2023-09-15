@@ -8,6 +8,7 @@ import java.util.Map;
 
 interface Human {
     void walk();
+
     void talk();
 }
 
@@ -49,7 +50,7 @@ class LoggingHandler implements InvocationHandler {
 class DynamicLoggingProxyDemo {
     @SuppressWarnings("unchecked")
     public static <T> T withLogging(T target, Class<T> itf) {
-        return (T) Proxy.newProxyInstance(itf.getClassLoader(), new Class<?>[] { itf }, new LoggingHandler(target));
+        return (T) Proxy.newProxyInstance(itf.getClassLoader(), new Class<?>[]{itf}, new LoggingHandler(target));
     }
 
     public static void main(String[] args) {

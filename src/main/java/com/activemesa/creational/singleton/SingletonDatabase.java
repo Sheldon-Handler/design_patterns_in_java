@@ -2,18 +2,17 @@ package com.activemesa.creational.singleton;
 
 import dev.mccue.guava.collect.Iterables;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 
 import java.io.File;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 interface Database {
     int getPopulation(String name);
@@ -23,6 +22,7 @@ class SingletonDatabase implements Database {
     private Dictionary<String, Integer> capitals = new Hashtable<>();
 
     private static int instanceCount = 0;
+
     public static int getCount() {
         return instanceCount;
     }
@@ -36,18 +36,16 @@ class SingletonDatabase implements Database {
             Path fullPath = Paths.get(f.getPath(), "capitals.txt");
             List<String> lines = Files.readAllLines(fullPath);
 
-      Iterables.partition(lines, 2)
-        .forEach(kv -> capitals.put(
-          kv.get(0).trim(),
-          Integer.parseInt(kv.get(1))
-        ));
+            Iterables.partition(lines, 2)
+                    .forEach(kv -> capitals.put(
+                            kv.get(0).trim(),
+                            Integer.parseInt(kv.get(1))
+                    ));
+        } catch (Exception e) {
+            // handle it!
+            System.err.println(e);
+        }
     }
-    catch (Exception e)
-    {
-      // handle it!
-      System.err.println(e);
-    }
-  }
 
     private static final SingletonDatabase INSTANCE = new SingletonDatabase();
 
@@ -86,22 +84,20 @@ class ConfigurableRecordFinder {
     }
 }
 
-class SingletonTestabilityDemo
-{
-  public static void main(String[] args) {
-    SingletonDatabase db = SingletonDatabase.getInstance();
+class SingletonTestabilityDemo {
+    public static void main(String[] args) {
+        SingletonDatabase db = SingletonDatabase.getInstance();
 
-    String city = "Tokyo";
-    int pop = db.getPopulation(city);
-    System.out.println(
-      String.format("%s has population %d", city, pop)
-    );
-  }
+        String city = "Tokyo";
+        int pop = db.getPopulation(city);
+        System.out.println(
+                String.format("%s has population %d", city, pop)
+        );
+    }
 }
 
-class DummyDatabase implements Database
-{
-  private Dictionary<String, Integer> data = new Hashtable<>();
+class DummyDatabase implements Database {
+    private Dictionary<String, Integer> data = new Hashtable<>();
 
     public DummyDatabase() {
         data.put("alpha", 1);
@@ -115,23 +111,21 @@ class DummyDatabase implements Database
     }
 }
 
-class Testability
-{
-  @Test
-  public void isSingletonTest()
-  {
-    SingletonDatabase db = SingletonDatabase.getInstance();
-    SingletonDatabase db2 = SingletonDatabase.getInstance();
-    assertSame(db, db2);
-    assertEquals(1, SingletonDatabase.getCount());
-  }
+class Testability {
+    @Test
+    public void isSingletonTest() {
+        SingletonDatabase db = SingletonDatabase.getInstance();
+        SingletonDatabase db2 = SingletonDatabase.getInstance();
+        assertSame(db, db2);
+        assertEquals(1, SingletonDatabase.getCount());
+    }
 
     @Test // not a unit test!
     public void singletonTotalPopulationTest() {
         SingletonRecordFinder rf = new SingletonRecordFinder();
         List<String> names = List.of("Seoul", "Mexico City");
         int tp = rf.getTotalPopulation(names);
-        assertEquals(17500000+17400000, tp);
+        assertEquals(17500000 + 17400000, tp);
     }
 
     @Test

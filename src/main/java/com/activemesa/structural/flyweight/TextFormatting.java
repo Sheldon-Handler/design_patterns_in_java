@@ -26,7 +26,7 @@ class FormattedText {
             char c = plainText.charAt(i);
             sb.append(
                     capitalize[i]
-                    ? Character.toUpperCase(c) : c
+                            ? Character.toUpperCase(c) : c
             );
         }
         return sb.toString();
@@ -77,7 +77,7 @@ class BetterFormattedText {
     }
 }
 
-class  TextFormattingDemo {
+class TextFormattingDemo {
     public static void main(String[] args) {
         FormattedText ft = new FormattedText("This is a brave new world");
         ft.capitalize(10, 15);

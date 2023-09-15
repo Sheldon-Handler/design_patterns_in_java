@@ -1,13 +1,12 @@
 package com.activemesa.structural.decorator.exercise;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
-public class Evaluate
-{
+public class Evaluate {
     @Test
-    public void test()
-    {
+    public void test() {
         Dragon dragon = new Dragon();
 
         assertEquals("flying", dragon.fly());

@@ -32,9 +32,9 @@ class Point {
     @Override
     public String toString() {
         return "Point{" +
-        "x=" + x +
-        ", y=" + y +
-        '}';
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }
 
@@ -70,10 +70,10 @@ class VectorObject extends ArrayList<Line> {
 
 class VectorRectangle extends VectorObject {
     public VectorRectangle(int x, int y, int width, int height) {
-        add(new Line(new Point(x,y), new Point(x+width, y)));
-        add(new Line(new Point(x+width,y), new Point(x+width, y+height)));
-        add(new Line(new Point(x,y), new Point(x, y+height)));
-        add(new Line(new Point(x,y+height), new Point(x+width, y+height)));
+        add(new Line(new Point(x, y), new Point(x + width, y)));
+        add(new Line(new Point(x + width, y), new Point(x + width, y + height)));
+        add(new Line(new Point(x, y), new Point(x, y + height)));
+        add(new Line(new Point(x, y + height), new Point(x + width, y + height)));
     }
 }
 
@@ -131,11 +131,11 @@ class LineToPointAdapter implements Iterable<Point> {
 }
 
 class Demo {
-    
+
     private final static List<VectorObject> vectorObjects
-    = new ArrayList<>(Arrays.asList(
-        new VectorRectangle(1,1,10,10),
-        new VectorRectangle(3,3,6,6)
+            = new ArrayList<>(Arrays.asList(
+            new VectorRectangle(1, 1, 10, 10),
+            new VectorRectangle(3, 3, 6, 6)
     ));
 
     public static void drawPoint(Point p) {

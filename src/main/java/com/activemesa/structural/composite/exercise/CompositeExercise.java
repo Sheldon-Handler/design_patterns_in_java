@@ -1,16 +1,18 @@
 package com.activemesa.structural.composite.exercise;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 
-interface ValueContainer extends Iterable<Integer> {}
+interface ValueContainer extends Iterable<Integer> {
+}
 
-class SingleValue implements ValueContainer
-{
+class SingleValue implements ValueContainer {
     public int value;
 
     // please leave this constructor as-is
-    public SingleValue(int value)
-    {
+    public SingleValue(int value) {
         this.value = value;
     }
 
@@ -20,21 +22,17 @@ class SingleValue implements ValueContainer
     }
 }
 
-class ManyValues extends ArrayList<Integer> implements ValueContainer
-{
+class ManyValues extends ArrayList<Integer> implements ValueContainer {
 }
 
 
-class MyList extends ArrayList<ValueContainer>
-{
+class MyList extends ArrayList<ValueContainer> {
     // please leave this constructor as-is
-    public MyList(Collection<? extends ValueContainer> c)
-    {
+    public MyList(Collection<? extends ValueContainer> c) {
         super(c);
     }
 
-    public int sum()
-    {
+    public int sum() {
         // todo
         int result = 0;
         for (ValueContainer c : this) {

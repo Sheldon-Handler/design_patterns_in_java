@@ -1,49 +1,41 @@
 package com.activemesa.structural.decorator.dynamic;
 
-interface Shape
-{
+interface Shape {
     String info(); // deliberately different from toString
 }
 
-class Circle implements Shape
-{
+class Circle implements Shape {
     private float radius;
 
-    Circle(){}
+    Circle() {
+    }
 
-    public Circle(float radius)
-    {
+    public Circle(float radius) {
         this.radius = radius;
     }
 
-    void resize(float factor)
-    {
+    void resize(float factor) {
         radius *= factor;
     }
 
     @Override
-    public String info()
-    {
+    public String info() {
         return "A circle of radius " + radius;
     }
 }
 
-class Square implements Shape
-{
+class Square implements Shape {
     private float side;
 
-    public Square()
-    {
+    public Square() {
     }
 
-    public Square(float side)
-    {
+    public Square(float side) {
         this.side = side;
     }
 
     @Override
-    public String info()
-    {
+    public String info() {
         return "A square with side " + side;
     }
 }
@@ -51,46 +43,38 @@ class Square implements Shape
 // we are NOT altering the base class of these objects
 // cannot make ColoredSquare, ColoredCircle
 
-class ColoredShape implements Shape
-{
+class ColoredShape implements Shape {
     private Shape shape;
     private String color;
 
-    public ColoredShape(Shape shape, String color)
-    {
+    public ColoredShape(Shape shape, String color) {
         this.shape = shape;
         this.color = color;
     }
 
     @Override
-    public String info()
-    {
+    public String info() {
         return shape.info() + " has the color " + color;
     }
 }
 
-class TransparentShape implements Shape
-{
+class TransparentShape implements Shape {
     private Shape shape;
     private int transparency;
 
-    public TransparentShape(Shape shape, int transparency)
-    {
+    public TransparentShape(Shape shape, int transparency) {
         this.shape = shape;
         this.transparency = transparency;
     }
 
     @Override
-    public String info()
-    {
+    public String info() {
         return shape.info() + " has " + transparency + "% transparency";
     }
 }
 
-class DynamicDecoratorDemo
-{
-    public static void main(String[] args)
-    {
+class DynamicDecoratorDemo {
+    public static void main(String[] args) {
         Circle circle = new Circle(10);
         System.out.println(circle.info());
 

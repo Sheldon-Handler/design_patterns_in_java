@@ -1,13 +1,12 @@
 package com.activemesa.behavioral.chainofresponsibility.exercise;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
-public class Evaluate
-{
+public class Evaluate {
     @Test
-    public void manyGoblinsTest()
-    {
+    public void manyGoblinsTest() {
         Game game = new Game();
         Goblin goblin = new Goblin(game);
         game.creatures.add(goblin);

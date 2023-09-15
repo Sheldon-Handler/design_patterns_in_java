@@ -4,11 +4,10 @@ import javafx.util.Pair;
 import org.reflections.Reflections;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 interface HotDrink {
     void consume();
@@ -36,7 +35,7 @@ class TeaFactory implements HotDrinkFactory {
     @Override
     public HotDrink prepare(int amount) {
         System.out.println("Put in tea bag, boil water, pour " +
-                + amount + "ml, add lemon, enjoy!");
+                +amount + "ml, add lemon, enjoy!");
         return new Tea();
     }
 }
@@ -45,7 +44,7 @@ class Coffeefactory implements HotDrinkFactory {
     @Override
     public HotDrink prepare(int amount) {
         System.out.println("Grind some beans, boil water, pour "
-        + amount + "ml, add cream and sugar, enjoy!");
+                + amount + "ml, add cream and sugar, enjoy!");
         return new Coffee();
     }
 }
@@ -55,8 +54,8 @@ class HotDrinkMachine {
 
     public HotDrinkMachine() throws Exception {
         Set<Class<? extends HotDrinkFactory>> types =
-        new Reflections("")
-                .getSubTypesOf(HotDrinkFactory.class);
+                new Reflections("")
+                        .getSubTypesOf(HotDrinkFactory.class);
 
         for (Class<? extends HotDrinkFactory> type : types) {
             namedFactories.add(new Pair<>(
@@ -81,7 +80,7 @@ class HotDrinkMachine {
             int i, amount;
 
             if ((s = reader.readLine()) != null
-            && (i = Integer.parseInt(s)) >= 0
+                    && (i = Integer.parseInt(s)) >= 0
                     && i < namedFactories.size()) {
 
                 System.out.println("Specify amount:");

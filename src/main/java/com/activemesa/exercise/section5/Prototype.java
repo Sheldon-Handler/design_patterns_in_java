@@ -1,22 +1,18 @@
 package com.activemesa.exercise.section5;
 
-class Point
-{
+class Point {
     public int x, y;
 
-    public Point(int x, int y)
-    {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
 }
 
-class Line
-{
+class Line {
     public Point start, end;
 
-    public Line(Point start, Point end)
-    {
+    public Line(Point start, Point end) {
         this.start = start;
         this.end = end;
     }

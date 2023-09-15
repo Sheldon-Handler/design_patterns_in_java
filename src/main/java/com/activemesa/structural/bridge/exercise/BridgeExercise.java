@@ -43,62 +43,50 @@ package com.activemesa.structural.bridge.exercise;
 
 // imagine VectorTriangle and RasterTriangle are here too
 
-interface Renderer
-{
+interface Renderer {
     public String whatToRenderAs();
 }
 
-abstract class Shape
-{
+abstract class Shape {
     private Renderer renderer;
     public String name;
 
-    public Shape(Renderer renderer)
-    {
+    public Shape(Renderer renderer) {
         this.renderer = renderer;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return String.format("Drawing %s as %s",
                 name, renderer.whatToRenderAs());
     }
 }
 
-class Triangle extends Shape
-{
-    public Triangle(Renderer renderer)
-    {
+class Triangle extends Shape {
+    public Triangle(Renderer renderer) {
         super(renderer);
         name = "Triangle";
     }
 }
 
-class Square extends Shape
-{
-    public Square(Renderer renderer)
-    {
+class Square extends Shape {
+    public Square(Renderer renderer) {
         super(renderer);
         name = "Square";
     }
 }
 
-class RasterRenderer implements Renderer
-{
+class RasterRenderer implements Renderer {
 
     @Override
-    public String whatToRenderAs()
-    {
+    public String whatToRenderAs() {
         return "pixels";
     }
 }
 
-class VectorRenderer implements Renderer
-{
+class VectorRenderer implements Renderer {
     @Override
-    public String whatToRenderAs()
-    {
+    public String whatToRenderAs() {
         return "lines";
     }
 }

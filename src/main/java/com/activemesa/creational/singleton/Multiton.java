@@ -10,6 +10,7 @@ enum Subsystem {
 
 class Printer {
     private static int instanceCount = 0;
+
     private Printer() {
         instanceCount++;
         System.out.println("A total of " + instanceCount + " instances created so far.");
