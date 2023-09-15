@@ -48,7 +48,10 @@ class LightSwitch {
     void on() {
         state.on(this);
     }
-    void off() { state.off(this); }
+
+    void off() {
+        state.off(this);
+    }
 }
 
 class StateDemo {

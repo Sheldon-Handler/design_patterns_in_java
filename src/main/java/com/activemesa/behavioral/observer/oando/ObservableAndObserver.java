@@ -66,7 +66,7 @@ class ObservableAndObserverDemo implements Observer<Person> {
     @Override
     public void handle(PropertyChangedEventArgs<Person> args) {
         System.out.println("Person's " + args.propertyName
-        + " has changed to " + args.newValue);
+                + " has changed to " + args.newValue);
     }
 }
 

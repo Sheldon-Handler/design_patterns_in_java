@@ -52,8 +52,7 @@ class InOrderIterator<T> implements Iterator<T> {
     @Override
     public T next() {
 
-        if (!yieldedStart)
-        {
+        if (!yieldedStart) {
             yieldedStart = true;
             return current.value;
         }
@@ -66,7 +65,7 @@ class InOrderIterator<T> implements Iterator<T> {
             return current.value;
         } else {
             Node<T> p = current.parent;
-            while (p!= null && current == p.right) {
+            while (p != null && current == p.right) {
                 current = p;
                 p = p.parent;
             }

@@ -48,7 +48,7 @@ class PropertyChangedEventArgs {
 
 class Person {
     public Event<PropertyChangedEventArgs>
-    propertyChanged = new Event<>();
+            propertyChanged = new Event<>();
 
     private int age;
 
@@ -84,7 +84,7 @@ class HandmadeEventsDemo {
         Event<PropertyChangedEventArgs>.Subscription sub
                 = person.propertyChanged.addHandler(x -> {
             System.out.println("Person's "
-            + x.propertyName + " has changed");
+                    + x.propertyName + " has changed");
         });
         person.setAge(17);
         person.setAge(18);

@@ -95,8 +95,7 @@ class SpringStateMachineDemo {
                 new InputStreamReader(System.in)
         );
 
-        while (true)
-        {
+        while (true) {
             State<States, Events> state = machine.getState();
 
             System.out.println("The phone is currently " + state.getId());
@@ -106,25 +105,20 @@ class SpringStateMachineDemo {
                     .stream()
                     .filter(t -> t.getSource() == state)
                     .collect(Collectors.toList());
-            for (int i = 0; i < ts.size(); ++i)
-            {
+            for (int i = 0; i < ts.size(); ++i) {
                 System.out.println("" + i + ". " +
                         ts.get(i).getTrigger().getEvent());
             }
 
             boolean parseOK;
             int choice = 0;
-            do
-            {
-                try
-                {
+            do {
+                try {
                     System.out.println("Please enter your choice:");
 
                     choice = Integer.parseInt(console.readLine());
                     parseOK = choice >= 0 && choice < ts.size();
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     parseOK = false;
                 }
             } while (!parseOK);

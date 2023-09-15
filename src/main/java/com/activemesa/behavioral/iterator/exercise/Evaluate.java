@@ -6,11 +6,9 @@ import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
 
-public class Evaluate
-{
+public class Evaluate {
     @Test
-    public void test()
-    {
+    public void test() {
         Node<Character> node = new Node<>('a',
                 new Node<>('b',
                         new Node<>('c'),
@@ -18,8 +16,7 @@ public class Evaluate
                 new Node<>('e'));
         StringBuilder sb = new StringBuilder();
         Iterator<Node<Character>> it = node.preOrder();
-        while (it.hasNext())
-        {
+        while (it.hasNext()) {
             sb.append(it.next().value);
         }
         assertEquals("abcde", sb.toString());

@@ -1,13 +1,12 @@
 package com.activemesa.behavioral.mediator.exercise;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
-public class Evaluate
-{
+public class Evaluate {
     @Test
-    public void test()
-    {
+    public void test() {
         Mediator mediator = new Mediator();
         Participant p1 = new Participant(mediator);
         Participant p2 = new Participant(mediator);

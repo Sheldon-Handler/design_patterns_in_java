@@ -14,7 +14,7 @@ class SimpleCreature {
     }
 
     public int sum() {
-        return strength+agility+intelligence;
+        return strength + agility + intelligence;
     }
 
     public double average() {
@@ -114,8 +114,8 @@ class ArrayBackedPropertiesDemo {
         creature.setStrength(17);
         System.out.println(
                 "Creature has a max stat of " + creature.max()
-                + ", total stats = " + creature.sum()
-                + " average stat = " + creature.average()
+                        + ", total stats = " + creature.sum()
+                        + " average stat = " + creature.average()
         );
     }
 }

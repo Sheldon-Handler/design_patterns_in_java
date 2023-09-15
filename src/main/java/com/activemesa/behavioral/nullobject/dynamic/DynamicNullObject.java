@@ -1,11 +1,10 @@
 package com.activemesa.behavioral.nullobject.dynamic;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 interface Log {
     void info(String msg);
+
     void warn(String msg);
 }
 
@@ -25,6 +24,7 @@ class ConsoleLog implements Log {
 class BankAccount {
     private Log log;
     private int balance;
+
     public BankAccount(Log log) {
         this.log = log;
     }
@@ -35,23 +35,18 @@ class BankAccount {
         // check for null everywhere
         if (log != null)
             log.info("Deposited " + amount
-            + ", balance is now " + balance);
+                    + ", balance is now " + balance);
     }
 
-    public void withdraw(int amount)
-    {
-        if (balance >= amount)
-        {
+    public void withdraw(int amount) {
+        if (balance >= amount) {
             balance -= amount;
-            if (log != null)
-            {
+            if (log != null) {
                 log.info("Withdrew " + amount
                         + ", we have " + balance + " left");
             }
-        }
-        else {
-            if (log != null)
-            {
+        } else {
+            if (log != null) {
                 log.warn("Could not withdraw "
                         + amount + " because balance is only " + balance);
             }

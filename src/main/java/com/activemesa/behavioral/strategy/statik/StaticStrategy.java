@@ -8,9 +8,17 @@ enum OutputFormat {
 }
 
 interface ListStrategy {
-    default void start(StringBuilder sb) {};
+    default void start(StringBuilder sb) {
+    }
+
+    ;
+
     void addListItem(StringBuilder sb, String item);
-    default void end(StringBuilder sb) {};
+
+    default void end(StringBuilder sb) {
+    }
+
+    ;
 }
 
 class MarkdownListStrategy implements ListStrategy {

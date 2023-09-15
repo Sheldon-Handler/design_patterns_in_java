@@ -1,6 +1,5 @@
 package com.activemesa.behavioral.mediator.rx;
 
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Observer;
 
@@ -10,7 +9,7 @@ import java.util.List;
 class EventBroker extends Observable<Integer> {
 
     private List<Observer<? super Integer>>
-    observers = new ArrayList<>();
+            observers = new ArrayList<>();
 
     @Override
     protected void subscribeActual(Observer<? super Integer> observer) {
@@ -42,7 +41,7 @@ class FootballCoach {
     public FootballCoach(EventBroker broker) {
         broker.subscribe(i -> {
             System.out.println("Hey, you scored "
-            + i + " goals!");
+                    + i + " goals!");
         });
     }
 }

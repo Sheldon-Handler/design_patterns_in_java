@@ -1,7 +1,6 @@
 package com.activemesa.behavioral.nullobject.exercise;
 
-interface Log
-{
+interface Log {
     // max # of elements in the log
     int getRecordLimit();
 
@@ -12,43 +11,38 @@ interface Log
     void logInfo(String message);
 }
 
-class Account
-{
+class Account {
     private Log log;
 
-    public Account(Log log)
-    {
+    public Account(Log log) {
         this.log = log;
     }
 
-    public void someOperation() throws Exception
-    {
+    public void someOperation() throws Exception {
         int c = log.getRecordCount();
         log.logInfo("Performing an operation");
-        if (c+1 != log.getRecordCount())
+        if (c + 1 != log.getRecordCount())
             throw new Exception();
         if (log.getRecordCount() >= log.getRecordLimit())
             throw new Exception();
     }
 }
 
-class NullLog implements Log
-{
+class NullLog implements Log {
     private int recordCount = Integer.MIN_VALUE;
 
     @Override
-    public int getRecordLimit()
-    {
+    public int getRecordLimit() {
         return Integer.MAX_VALUE;
     }
+
     @Override
-    public int getRecordCount()
-    {
+    public int getRecordCount() {
         return recordCount;
     }
+
     @Override
-    public void logInfo(String message)
-    {
+    public void logInfo(String message) {
         ++recordCount;
     }
 }

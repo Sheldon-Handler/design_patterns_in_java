@@ -2,6 +2,7 @@ package com.activemesa.behavioral.nullobject;
 
 interface Log {
     void info(String msg);
+
     void warn(String msg);
 }
 
@@ -21,6 +22,7 @@ class ConsoleLog implements Log {
 class BankAccount {
     private Log log;
     private int balance;
+
     public BankAccount(Log log) {
         this.log = log;
     }
